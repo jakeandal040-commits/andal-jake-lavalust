@@ -577,7 +577,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         <span class="word-lava">Lava</span><span class="word-lust">Lust</span><br>Framework
     </h1>
     <p class="hero-sub">
+<<<<<<< HEAD
         A lightweight, expressive PHP MVC framework - Deployed by Ken Jerry.
+=======
+        Jake Andal Lab 2
+>>>>>>> 57d514730b121cf1a0767a53da40522e71cc94b8
     </p>
     <div class="hero-actions">
         <a href="<?= site_url('student?permission=yes'); ?>" class="btn btn-primary">

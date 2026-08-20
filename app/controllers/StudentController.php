@@ -6,14 +6,14 @@ class StudentController extends Controller
     private function student()
     {
         return [
-            'student_id' => 'MCC2024-06104',
+            'student_id' => 'MCC2024-00083',
             'name'       => 'Jake Sarmiento Andal',
             'course'     => 'BS Information Technology',
             'year'       => '3rd Year',
             'section'    => 'BSIT-3F6',
             'email'      => 'andal.jake@minsu.edu.ph',
             'address'    => 'Naujan, Philippines',
-            'contact'    => '0994-086-9635',
+            'contact'    => '0994-067-7564',
             'description' => 'Motivated IT student focused on web development, designing intuitive interfaces, and strengthening practical coding expertise.',
 'skills'     => ['PHP', 'HTML', 'CSS', 'Networking', 'Analytical Thinking'],
 'hobbies'    => ['Cycling', 'Sleeping', 'Online Gaming', 'Watching Movies', 'Listening to Music']
