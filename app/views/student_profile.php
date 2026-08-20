@@ -13,133 +13,149 @@ function profile_value($student, $key)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profile - Ken Jerry</title>
+    <title>Student Profile</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --sky: #38bdf8;
-            --sky-deep: #0284c7;
-            --sky-soft: #e0f2fe;
-            --ink: #123047;
-            --muted: #5b7b91;
-            --card: rgba(255, 255, 255, 0.86);
-            --line: rgba(56, 189, 248, 0.28);
-            --pink: #fb7185;
+            --forest: #2f6b3f;
+            --forest-deep: #1f4e2c;
+            --moss: #4f8a5b;
+            --sage: #a9c9a4;
+            --sage-soft: #e4efdf;
+            --parchment: #f8f5ec;
+            --bark: #7a5738;
+            --ink: #24331f;
+            --muted: #5c6d54;
         }
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
             color: var(--ink);
-            background:
-                radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.95) 0 7%, transparent 8%),
-                radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.8) 0 5%, transparent 6%),
-                linear-gradient(180deg, #bae6fd 0%, #e0f2fe 45%, #f8fbff 100%);
-            overflow-x: hidden;
+            background: linear-gradient(180deg, #1f4e2c 0%, #3d7a4c 22%, #eef3e8 60%, #f8f5ec 100%);
+            background-attachment: fixed;
         }
-        body::before, body::after {
-            content: "";
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.72);
-            box-shadow:
-                44px 12px 0 rgba(255, 255, 255, 0.64),
-                88px 2px 0 rgba(255, 255, 255, 0.5);
-        }
-        body::before { width: 96px; height: 34px; top: 95px; left: 6%; }
-        body::after { width: 118px; height: 38px; top: 210px; right: 9%; opacity: 0.75; }
         .shell {
-            position: relative;
-            z-index: 1;
             width: min(1040px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 32px 0 42px;
+            padding: 32px 0 48px;
         }
         .nav {
             display: flex; align-items: center; justify-content: space-between; gap: 16px;
-            padding: 14px 18px;
+            padding: 14px 20px;
             margin-bottom: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.58);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.12);
+            border: 2px solid var(--sage);
+            border-radius: 12px;
+            background: var(--parchment);
+            box-shadow: 0 10px 24px rgba(31, 78, 44, 0.22);
         }
-        .brand { font-size: 18px; font-weight: 900; color: var(--sky-deep); }
+        .brand { font-size: 18px; font-weight: 900; color: var(--forest-deep); }
+        .brand::before { content: "🌿 "; }
         .links { display: flex; gap: 10px; flex-wrap: wrap; }
         .links a {
-            color: var(--sky-deep);
+            color: var(--forest-deep);
             text-decoration: none;
             font-weight: 800;
             font-size: 14px;
-            padding: 10px 14px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(255,255,255,0.76);
-            box-shadow: 0 6px 14px rgba(14, 165, 233, 0.1);
+            padding: 9px 14px;
+            border: 2px solid var(--sage);
+            border-radius: 10px;
+            background: var(--sage-soft);
         }
-        .links a.active, .links a:hover { color: #fff; background: var(--sky); border-color: var(--sky); }
-        .links a.danger { color: #be123c; }
-        .links a.danger:hover { color: #fff; background: var(--pink); border-color: var(--pink); }
+        .links a.active, .links a:hover { color: #fff; background: var(--forest); border-color: var(--forest); }
+        .links a.danger { color: #7a2a2a; background: #f6e6e2; border-color: #d9b3a8; }
+        .links a.danger:hover { color: #fff; background: #b1493a; border-color: #b1493a; }
+
+        .card {
+            background: var(--parchment);
+            border: 2px solid var(--sage);
+            border-radius: 12px;
+            box-shadow: 0 16px 34px rgba(31, 78, 44, 0.16);
+        }
+
         .profile {
-            display: grid; grid-template-columns: 320px 1fr; gap: 22px;
-        }
-        .panel {
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 20px 50px rgba(2, 132, 199, 0.16);
+            display: flex; flex-direction: column; gap: 22px;
         }
         .identity {
-            padding: 28px;
-            background:
-                linear-gradient(135deg, rgba(255,255,255,0.94), rgba(224, 242, 254, 0.88)),
-                var(--card);
+            padding: 34px;
+            text-align: center;
+            border-top: 6px solid var(--forest);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .avatar {
-            width: 96px; height: 96px; display: grid; place-items: center;
+            width: 92px; height: 92px; display: grid; place-items: center;
             color: #fff;
-            background: linear-gradient(135deg, var(--sky), var(--sky-deep));
-            border-radius: 8px;
-            font-size: 34px;
+            background: var(--forest);
+            border-radius: 10px;
+            font-size: 32px;
             font-weight: 900;
-            margin-bottom: 22px;
-            box-shadow: 0 14px 26px rgba(2, 132, 199, 0.24);
+            margin: 0 auto 18px;
+            box-shadow: 0 10px 22px rgba(31, 78, 44, 0.3);
         }
-        h1 { color: #075985; font-size: 34px; line-height: 1.05; }
-        .muted { margin-top: 10px; color: var(--muted); line-height: 1.6; }
-        .details { padding: 30px; }
-        .details h2 { font-size: 24px; margin-bottom: 18px; color: #075985; }
-        .rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-        .row {
-            padding: 16px;
-            border: 1px solid var(--line);
+        h1 { color: var(--forest-deep); font-size: 32px; line-height: 1.08; }
+        .muted { margin-top: 12px; max-width: 480px; color: var(--muted); line-height: 1.6; }
+
+        .details { padding: 30px; border-top: 6px solid var(--bark); }
+        .details h2 { font-size: 22px; margin-bottom: 18px; color: var(--forest-deep); }
+        .details h2::before { content: "🍃 "; }
+
+        table.info-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
             border-radius: 8px;
-            background: rgba(255,255,255,0.82);
         }
-        .row small { color: var(--sky-deep); font-weight: 900; text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em; }
-        .row p { margin-top: 7px; font-weight: 900; color: #0f3b57; overflow-wrap: anywhere; }
-        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-        .chip {
-            padding: 8px 10px;
-            border-radius: 8px;
-            color: #075985;
-            background: #e0f2fe;
-            border: 1px solid #7dd3fc;
+        table.info-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--forest);
+            color: #fff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        table.info-table th:first-child { width: 34%; border-top-left-radius: 8px; }
+        table.info-table th:last-child { border-top-right-radius: 8px; }
+        table.info-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--sage);
+            color: var(--ink);
+            font-weight: 700;
+            overflow-wrap: anywhere;
+            vertical-align: top;
+        }
+        table.info-table td.label {
             font-weight: 900;
+            color: var(--forest-deep);
+            background: var(--sage-soft);
+        }
+        table.info-table tr:nth-child(even) td:not(.label) { background: #fbfaf4; }
+        table.info-table tr:last-child td { border-bottom: none; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: var(--forest-deep);
+            background: var(--sage-soft);
+            border: 1px solid var(--sage);
+            font-weight: 800;
             font-size: 13px;
         }
+        .tag::before { content: "🌱 "; }
+
         @media (max-width: 820px) {
-            .profile, .rows { grid-template-columns: 1fr; }
+            .profile { grid-template-columns: 1fr; }
             .nav { align-items: flex-start; flex-direction: column; }
+            table.info-table th:nth-child(1), table.info-table td.label { width: 40%; }
         }
     </style>
 </head>
 <body>
     <main class="shell">
         <nav class="nav">
-            <div class="brand">Ken Jerry Student Portal</div>
+            <div class="brand">Student Portal</div>
             <div class="links">
                 <a href="<?= site_url('student'); ?>">Home</a>
                 <a class="active" href="<?= site_url('student/profile'); ?>">Student Profile</a>
@@ -149,8 +165,8 @@ function profile_value($student, $key)
         </nav>
 
         <section class="profile">
-            <aside class="panel identity">
-                <div class="avatar">KJ</div>
+            <aside class="card identity">
+                <div class="avatar">JA</div>
                 <h1><?= profile_value($student, 'name'); ?></h1>
                 <p class="muted">
                     A <?= profile_value($student, 'year'); ?> <?= profile_value($student, 'course'); ?>
@@ -158,50 +174,59 @@ function profile_value($student, $key)
                 </p>
             </aside>
 
-            <section class="panel details">
+            <section class="card details">
                 <h2>Student Profile</h2>
-                <div class="rows">
-                    <div class="row">
-                        <small>Student ID</small>
-                        <p><?= profile_value($student, 'student_id'); ?></p>
-                    </div>
-                    <div class="row">
-                        <small>Email</small>
-                        <p><?= profile_value($student, 'email'); ?></p>
-                    </div>
-                    <div class="row">
-                        <small>Address</small>
-                        <p><?= profile_value($student, 'address'); ?></p>
-                    </div>
-                    <div class="row">
-                        <small>Contact Number</small>
-                        <p><?= profile_value($student, 'contact'); ?></p>
-                    </div>
-                    <div class="row">
-                        <small>Course</small>
-                        <p><?= profile_value($student, 'course'); ?></p>
-                    </div>
-                    <div class="row">
-                        <small>Profile Description</small>
-                        <p><?= profile_value($student, 'description'); ?></p>
-                    </div>
-                    <div class="row">
-                        <small>Skills</small>
-                        <div class="chips">
-                            <?php foreach (($student['skills'] ?? []) as $skill): ?>
-                                <span class="chip"><?= htmlspecialchars($skill, ENT_QUOTES, 'UTF-8'); ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <small>Hobbies</small>
-                        <div class="chips">
-                            <?php foreach (($student['hobbies'] ?? []) as $hobby): ?>
-                                <span class="chip"><?= htmlspecialchars($hobby, ENT_QUOTES, 'UTF-8'); ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
+                <table class="info-table">
+                    <thead>
+                        <tr><th>Field</th><th>Detail</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="label">Student ID</td>
+                            <td><?= profile_value($student, 'student_id'); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Email</td>
+                            <td><?= profile_value($student, 'email'); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Address</td>
+                            <td><?= profile_value($student, 'address'); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Contact Number</td>
+                            <td><?= profile_value($student, 'contact'); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Course</td>
+                            <td><?= profile_value($student, 'course'); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Profile Description</td>
+                            <td><?= profile_value($student, 'description'); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Skills</td>
+                            <td>
+                                <div class="tags">
+                                    <?php foreach (($student['skills'] ?? []) as $skill): ?>
+                                        <span class="tag"><?= htmlspecialchars($skill, ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Hobbies</td>
+                            <td>
+                                <div class="tags">
+                                    <?php foreach (($student['hobbies'] ?? []) as $hobby): ?>
+                                        <span class="tag"><?= htmlspecialchars($hobby, ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </section>
     </main>

@@ -7,16 +7,17 @@ class StudentController extends Controller
     {
         return [
             'student_id' => 'MCC2024-06104',
-            'name'       => 'Ken Jerry',
+            'name'       => 'Jake Sarmiento Andal',
             'course'     => 'BS Information Technology',
             'year'       => '3rd Year',
             'section'    => 'BSIT-3F6',
-            'email'      => 'mendoza.kenjerrya@minsu.edu.ph',
-            'address'    => 'Baco, Philippines',
+            'email'      => 'andal.jake@minsu.edu.ph',
+            'address'    => 'Naujan, Philippines',
             'contact'    => '0994-086-9635',
-            'description'=> 'A dedicated IT student who enjoys learning web development, building clean interfaces, and improving practical coding skills.',
-            'skills'     => ['PHP', 'HTML', 'CSS', 'Networking', 'Yearner'],
-            'hobbies'    => ['Rides', 'Sleeping', 'Online Gaming', 'Watching Movies', 'Listening to Music']
+            'description' => 'Motivated IT student focused on web development, designing intuitive interfaces, and strengthening practical coding expertise.',
+'skills'     => ['PHP', 'HTML', 'CSS', 'Networking', 'Analytical Thinking'],
+'hobbies'    => ['Cycling', 'Sleeping', 'Online Gaming', 'Watching Movies', 'Listening to Music']
+
         ];
     }
 
